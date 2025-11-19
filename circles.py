@@ -58,8 +58,6 @@ class MovingCircle():
 
 		t = t + self.offset
 		x, y = get_grid()
-		x0 = WIDTH / 2
-		y0 = HEIGHT / 2
 		dist = np.sqrt((x - self.centerx)**2 + (y - self.centery)**2) / WIDTH
 		tt = (t % self.freq) / self.freq
 		c = np.where((tt <= dist) & (dist <= (tt + 0.3)), 1, 0) * 100
@@ -86,23 +84,6 @@ class AnimateRGB():
 		c3 = np.stack([R.animate(rt), G.animate(gt), B.animate(bt)], axis=2)
 		print(c3)
 		show_np(c3)
-
-# class MovingDot:
-# 	def __init__(self, x, y, dx, dy):
-# 		self.x = x
-# 		self.y = y
-# 		self.dx = dx
-# 		self.dy = dy
-
-# 	def animate(self, t):
-# 		self.x += self.dx
-# 		self.y += self.dy
-# 		if self.x < 0 or self.x > HEIGHT:
-# 			self.dx *= -1
-# 		if self.y < 0 or self.y > WIDTH:
-# 			self.dy *= -1
-
-# 		x, y = get_grid
 
 
 R = MovingCircle(freq=3, offset=3)
